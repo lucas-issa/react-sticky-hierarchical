@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/lucas-issa/react-sticky-hierarchical.svg?branch=master)](https://travis-ci.org/lucas-issa/react-sticky-hierarchical)
 
 React Sticky Hierarchical
 =========================
@@ -67,4 +68,15 @@ const App = React.createClass({
 });
 
 ReactDOM.render(<App />, document.getElementById('app'));
+```
+
+Test
+----
+
+```sh
+$ yarn run test
+```
+or
+```sh
+$ npm test
 ```
