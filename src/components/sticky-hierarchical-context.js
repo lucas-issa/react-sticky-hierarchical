@@ -286,7 +286,7 @@ function __calculateStyles(contexto) {
 const defaultFixedExtraStyle = {};
 
 
-const StickyStackContext = React.createClass({
+const StickyHierarchicalContext = React.createClass({
 
   propTypes: {
     children: React.PropTypes.any,
@@ -490,4 +490,4 @@ const StickyStackContext = React.createClass({
 
 });
 
-export default StickyStackContext;
+export default StickyHierarchicalContext;

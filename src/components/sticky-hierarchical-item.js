@@ -1,11 +1,11 @@
 import React from 'react';
 import ResizeSensor from 'css-element-queries/src/ResizeSensor';
 
-const StickyStackItem = React.createClass({
+const StickyHierarchicalItem = React.createClass({
 
   propTypes: {
     children: React.PropTypes.any,
-    position: React.PropTypes.number,
+    hierarchicalLevel: React.PropTypes.number,
   },
 
   contextTypes: {
@@ -22,7 +22,7 @@ const StickyStackItem = React.createClass({
 
   componentDidMount() {
     const {register, clearCache} = this.context;
-    const {position} = this.props;
+    const {hierarchicalLevel} = this.props;
     const {
       offsetTop,
       offsetHeight,
@@ -86,7 +86,7 @@ const StickyStackItem = React.createClass({
 
     this.registrationRef = register(
       this,
-      position
+      hierarchicalLevel
       // offsetTop,
       // offsetHeight
     );
@@ -112,12 +112,12 @@ const StickyStackItem = React.createClass({
 
   render() {
     const {getStyle} = this.context;
-    const {children, position} = this.props;
+    const {children, hierarchicalLevel} = this.props;
     const {height} = this.state;
 
     return (
       <div ref={domRef => this.domRef = domRef} style={{height}}>
-        <div ref={domRef2 => this.domRef2 = domRef2} style={getStyle(position, this.registrationRef)}>
+        <div ref={domRef2 => this.domRef2 = domRef2} style={getStyle(hierarchicalLevel, this.registrationRef)}>
           {children}
         </div>
       </div>
@@ -126,4 +126,4 @@ const StickyStackItem = React.createClass({
 
 });
 
-export default StickyStackItem;
+export default StickyHierarchicalItem;

@@ -3,7 +3,7 @@ jest.dontMock('../sticky-stack-context');
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-const StickyStackContext = require('../sticky-stack-context').default;
+const StickyStackContext = require('../sticky-hierarchical-context').default;
 
 describe('StickyStackContext', () => {
   let stickyStackContext;

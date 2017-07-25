@@ -28,40 +28,40 @@ Usage
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {StickyStackContext, StickyStackItem} from 'react-sticky-hierarchical';
+import {StickyHierarchicalContext, StickyHierarchicalItem} from 'react-sticky-hierarchical';
 
 const App = React.createClass({
   render() {
     return (
-      <StickyStackContext>
+      <StickyHierarchicalContext>
         <p>
           Lorem Ipsum
         </p>
-        <StickyStackItem position={0}>
+        <StickyHierarchicalItem hierarchicalLevel={0}>
           <h1>
             Live
           </h1>
-        </StickyStackItem>
+        </StickyHierarchicalItem>
         <p>
           Lorem Ipsum
         </p>
-        <StickyStackItem position={1}>
+        <StickyHierarchicalItem hierarchicalLevel={1}>
           <h2>
             Your
           </h2>
-        </StickyStackItem>
+        </StickyHierarchicalItem>
         <p>
           Lorem Ipsum
         </p>
-        <StickyStackItem position={2}>
+        <StickyHierarchicalItem hierarchicalLevel={2}>
           <h3>
             City
           </h3>
-        </StickyStackItem>
+        </StickyHierarchicalItem>
         <p>
           Lorem Ipsum
         </p>
-      </StickyStackContext>
+      </StickyHierarchicalContext>
     );
   },
 });

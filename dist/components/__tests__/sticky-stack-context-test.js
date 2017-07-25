@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 jest.dontMock('../sticky-stack-context');
 
-var StickyStackContext = require('../sticky-stack-context').default;
+var StickyStackContext = require('../sticky-hierarchical-context').default;
 
 describe('StickyStackContext', function () {
   var stickyStackContext = void 0;

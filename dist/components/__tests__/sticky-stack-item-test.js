@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 jest.dontMock('../sticky-stack-item');
 
-var StickyStackItem = require('../sticky-stack-item').default;
+var StickyStackItem = require('../sticky-hierarchical-item').default;
 
 describe('StickyStackItem', function () {
   var register = void 0;

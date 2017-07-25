@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {StickyStackContext, StickyStackItem} from '../dist';
+import {StickyHierarchicalContext, StickyHierarchicalItem} from '../dist';
 
 const App = React.createClass({
   render() {
@@ -17,12 +17,12 @@ const App = React.createClass({
           </div>
         </div>
 
-        <StickyStackContext>
+        <StickyHierarchicalContext>
 
           <div className="divider divider--short" />
 
           <div className="divider" />
-          <StickyStackItem position={0}>
+          <StickyHierarchicalItem hierarchicalLevel={0}>
             <div className="content">
               <div className="logo">
               <span style={{
@@ -35,140 +35,140 @@ const App = React.createClass({
               </span>
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={1}>
+          <StickyHierarchicalItem hierarchicalLevel={1}>
             <div className="content">
               <div className="block block--tall">
                 1
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={2}>
+          <StickyHierarchicalItem hierarchicalLevel={2}>
             <div className="content">
               <div className="block" >
                 1.1
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={3}>
+          <StickyHierarchicalItem hierarchicalLevel={3}>
             <div className="content">
               <div className="block block--short" >
                 1.1.1
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={3}>
+          <StickyHierarchicalItem hierarchicalLevel={3}>
             <div className="content">
               <div className="block block--short" >
                 1.1.2
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={3}>
+          <StickyHierarchicalItem hierarchicalLevel={3}>
             <div className="content">
               <div className="block block--short" >
                 1.1.3
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={2}>
+          <StickyHierarchicalItem hierarchicalLevel={2}>
             <div className="content">
               <div className="block" >
                 1.2
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={1}>
+          <StickyHierarchicalItem hierarchicalLevel={1}>
             <div className="content">
               <div className="block" >
                 2
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
-          <StickyStackItem position={1}>
+          <StickyHierarchicalItem hierarchicalLevel={1}>
             <div className="content">
               <div className="block" >
                 3
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={2}>
+          <StickyHierarchicalItem hierarchicalLevel={2}>
             <div className="content">
               <div className="block" >
                 3.1
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={3}>
+          <StickyHierarchicalItem hierarchicalLevel={3}>
             <div className="content">
               <div className="block block--short" >
                 3.1.1
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={3}>
+          <StickyHierarchicalItem hierarchicalLevel={3}>
             <div className="content">
               <div className="block block--short" >
                 3.1.2
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-          <StickyStackItem position={4}>
+          <StickyHierarchicalItem hierarchicalLevel={4}>
             <div className="content">
               <div className="block block--content">
                 <a className="link" href="https://github.com/lucas-issa/react-sticky-hierarchical">Fork me on Github</a>
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider divider--short" />
 
-          <StickyStackItem position={5}>
+          <StickyHierarchicalItem hierarchicalLevel={5}>
             <div className="content">
               <div className="block block--doc">
                 <p><a href="https://github.com/lucas-issa/react-sticky-hierarchical">Documentation</a></p>
               </div>
             </div>
-          </StickyStackItem>
+          </StickyHierarchicalItem>
 
           <div className="divider" />
 
-        </StickyStackContext>
+        </StickyHierarchicalContext>
       </div>
     );
   },

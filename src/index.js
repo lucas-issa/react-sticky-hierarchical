@@ -1,4 +1,4 @@
-import StickyStackContext from './components/sticky-stack-context';
-import StickyStackItem from './components/sticky-stack-item';
+import StickyHierarchicalContext from './components/sticky-hierarchical-context';
+import StickyHierarchicalItem from './components/sticky-hierarchical-item';
 
-export {StickyStackContext, StickyStackItem};
+export {StickyHierarchicalContext, StickyHierarchicalItem};

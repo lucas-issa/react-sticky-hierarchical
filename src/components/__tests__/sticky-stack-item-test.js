@@ -3,7 +3,7 @@ jest.dontMock('../sticky-stack-item');
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-const StickyStackItem = require('../sticky-stack-item').default;
+const StickyStackItem = require('../sticky-hierarchical-item').default;
 
 describe('StickyStackItem', () => {
   let register;

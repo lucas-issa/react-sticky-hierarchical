@@ -3,17 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.StickyStackItem = exports.StickyStackContext = undefined;
+exports.StickyHierarchicalItem = exports.StickyHierarchicalContext = undefined;
 
-var _stickyStackContext = require('./components/sticky-stack-context');
+var _stickyHierarchicalContext = require('./components/sticky-hierarchical-context');
 
-var _stickyStackContext2 = _interopRequireDefault(_stickyStackContext);
+var _stickyHierarchicalContext2 = _interopRequireDefault(_stickyHierarchicalContext);
 
-var _stickyStackItem = require('./components/sticky-stack-item');
+var _stickyHierarchicalItem = require('./components/sticky-hierarchical-item');
 
-var _stickyStackItem2 = _interopRequireDefault(_stickyStackItem);
+var _stickyHierarchicalItem2 = _interopRequireDefault(_stickyHierarchicalItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.StickyStackContext = _stickyStackContext2.default;
-exports.StickyStackItem = _stickyStackItem2.default;
+exports.StickyHierarchicalContext = _stickyHierarchicalContext2.default;
+exports.StickyHierarchicalItem = _stickyHierarchicalItem2.default;
