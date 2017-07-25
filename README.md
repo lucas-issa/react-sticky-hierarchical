@@ -9,7 +9,7 @@ It is clone of [react-sticky-stack](https://github.com/YPlan/react-sticky-stack)
 Demo
 ----
 
-[https://react-sticky-stack.herokuapp.com/](https://react-sticky-stack.herokuapp.com/)
+[https://lucas-issa.github.io/react-sticky-hierarchical/](https://lucas-issa.github.io/react-sticky-hierarchical/)
 
 Installation
 ------------
