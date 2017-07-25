@@ -290,26 +290,28 @@ const StickyStackContext = React.createClass({
 
   propTypes: {
     children: React.PropTypes.any,
-    identationDistance: React.PropTypes.number,
     /**
      * Function with a itemLevel and identationDistance parameters.
      */
     getFixedExtraStyle: React.PropTypes.func,
+    identationDistance: React.PropTypes.number,
     // TODO: Adicionar uma propriedade para permitir diminuir a largura do fixed (além da identação)
     // TODO: Usar esse parâmetro quando o menu aparece empurrando a tela.
     // TODO: Limpar o código, documenta-lo e alterar o Readme.
     // TODO: Renomear a propriedade position para nestingLevel.
   },
 
-  defaultProps: {
-    identationDistance: 0,
-    getFixedExtraStyle: () => defaultFixedExtraStyle,
-  },
-
   childContextTypes: {
     getStyle: React.PropTypes.func,
     register: React.PropTypes.func,
     clearCache: React.PropTypes.func,
+  },
+
+  getDefaultProps() {
+    return {
+      identationDistance: 0,
+      getFixedExtraStyle: () => defaultFixedExtraStyle,
+    };
   },
 
   getInitialState() {

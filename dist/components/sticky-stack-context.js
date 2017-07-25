@@ -466,18 +466,11 @@ var StickyStackContext = _react2.default.createClass({
 
   propTypes: {
     children: _react2.default.PropTypes.any,
-    identationDistance: _react2.default.PropTypes.number,
     /**
      * Function with a itemLevel and identationDistance parameters.
      */
-    getFixedExtraStyle: _react2.default.PropTypes.func
-  },
-
-  defaultProps: {
-    identationDistance: 0,
-    getFixedExtraStyle: function getFixedExtraStyle() {
-      return defaultFixedExtraStyle;
-    }
+    getFixedExtraStyle: _react2.default.PropTypes.func,
+    identationDistance: _react2.default.PropTypes.number
   },
 
   childContextTypes: {
@@ -486,6 +479,14 @@ var StickyStackContext = _react2.default.createClass({
     clearCache: _react2.default.PropTypes.func
   },
 
+  getDefaultProps: function getDefaultProps() {
+    return {
+      identationDistance: 0,
+      getFixedExtraStyle: function getFixedExtraStyle() {
+        return defaultFixedExtraStyle;
+      }
+    };
+  },
   getInitialState: function getInitialState() {
     this.components = [];
     this.styles = [];
