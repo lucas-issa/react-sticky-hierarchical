@@ -6,8 +6,8 @@ node_js:
 - "4.2.3"
 - "6"
 - "4"
-cache:
-  yarn: true
+# cache:
+#   yarn: true
 install:
 - yarn
 script:
