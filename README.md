@@ -6,6 +6,11 @@ A Sticky Hierarchical component for [React.js](http://facebook.github.io/react/)
 
 It is clone of [react-sticky-stack](https://github.com/YPlan/react-sticky-stack) with changes to became hierarchical. 
 
+Demo
+----
+
+[https://react-sticky-stack.herokuapp.com/](https://react-sticky-stack.herokuapp.com/)
+
 Installation
 ------------
 
@@ -16,11 +21,6 @@ or
 ```sh
 $ npm install react-sticky-hierarchical --save
 ```
-
-Demo
-----
-
-[https://react-sticky-stack.herokuapp.com/](https://react-sticky-stack.herokuapp.com/)
 
 Usage
 -----
