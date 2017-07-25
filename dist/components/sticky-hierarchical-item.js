@@ -14,13 +14,13 @@ var _ResizeSensor2 = _interopRequireDefault(_ResizeSensor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var StickyStackItem = _react2.default.createClass({
-  displayName: 'StickyStackItem',
+var StickyHierarchicalItem = _react2.default.createClass({
+  displayName: 'StickyHierarchicalItem',
 
 
   propTypes: {
     children: _react2.default.PropTypes.any,
-    position: _react2.default.PropTypes.number
+    hierarchicalLevel: _react2.default.PropTypes.number
   },
 
   contextTypes: {
@@ -40,19 +40,16 @@ var StickyStackItem = _react2.default.createClass({
     var _context = this.context,
         register = _context.register,
         clearCache = _context.clearCache;
-    var position = this.props.position;
-    var _domRef = this.domRef2,
-        offsetTop = _domRef.offsetTop,
-        offsetHeight = _domRef.offsetHeight;
+    var hierarchicalLevel = this.props.hierarchicalLevel;
 
 
-    this.offsetTop = offsetTop;
-    this.offsetHeight = offsetHeight;
-    // this.clientHeight = clientHeight;
+    this.offsetTop = this.domRef2.offsetTop;
+    this.offsetHeight = this.domRef2.offsetHeight;
+    // this.clientHeight = this.domRef2.clientHeight;
     new _ResizeSensor2.default(this.domRef2, function () {
-      var _domRef2 = _this.domRef2,
-          offsetTop = _domRef2.offsetTop,
-          offsetHeight = _domRef2.offsetHeight;
+      var _domRef = _this.domRef2,
+          offsetTop = _domRef.offsetTop,
+          offsetHeight = _domRef.offsetHeight;
 
       // console.log('Changed to ', this.clientHeight, '!=', clientHeight);
       // if (clientHeight !== this.clientHeight) {
@@ -70,37 +67,15 @@ var StickyStackItem = _react2.default.createClass({
       }
     });
 
-    //     let observer = new MutationObserver(function(mutations) {
-    //       mutations.forEach(function(mutation) {
-    //         console.log('mutation.type: ', mutation.type);
-    //       });
-    //     });
-    //
-    // // configuration of the observer:
-    //     var config = {
-    //       attributes: true, childList: true, characterData: true,
-    //       subtree: true,
-    //       attributeOldValue: true,
-    //       characterDataOldValue: true,
-    //     };
-    //
-    //
-    // // pass in the target node, as well as the observer options
-    //     observer.observe(this.domRef, config);
-    //
-    // // later, you can stop observing
-    // //     observer.disconnect();
-
-
-    this.registrationRef = register(this, position
+    this.registrationRef = register(this, hierarchicalLevel
     // offsetTop,
     // offsetHeight
     );
 
-    this._setHeight(offsetHeight);
+    this._setHeight(this.offsetHeight);
   },
   componentDidUpdate: function componentDidUpdate() {
-    if (this.domRef.offsetHeight != this.state.height) {
+    if (this.domRef.offsetHeight !== this.state.height) {
       this._setHeight(this.domRef.offsetHeight);
     }
   },
@@ -118,7 +93,7 @@ var StickyStackItem = _react2.default.createClass({
     var getStyle = this.context.getStyle;
     var _props = this.props,
         children = _props.children,
-        position = _props.position;
+        hierarchicalLevel = _props.hierarchicalLevel;
     var height = this.state.height;
 
 
@@ -131,11 +106,11 @@ var StickyStackItem = _react2.default.createClass({
         'div',
         { ref: function ref(domRef2) {
             return _this2.domRef2 = domRef2;
-          }, style: getStyle(position, this.registrationRef) },
+          }, style: getStyle(hierarchicalLevel, this.registrationRef) },
         children
       )
     );
   }
 });
 
-exports.default = StickyStackItem;
+exports.default = StickyHierarchicalItem;

@@ -87,7 +87,6 @@ function detectFixeds(parent, fixedItens) {
     lastFixed: undefined
   };
 
-
   var height = parent.item ? parent.item.offsetHeight() + lastFixedHeight : 0;
 
   var _iteratorNormalCompletion2 = true;
@@ -97,7 +96,6 @@ function detectFixeds(parent, fixedItens) {
   try {
     for (var _iterator2 = parent.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
       var item = _step2.value;
-
 
       item.height = height;
 
@@ -138,7 +136,6 @@ function detectFixeds(parent, fixedItens) {
 }
 
 function createStyle(styles, item) {
-
   var level = item.level;
   var registrationId = item.item.registrationId;
   var style = item.style;
@@ -155,7 +152,6 @@ function createStyle(styles, item) {
 function initializeItemStyle(parent, createStylesConf) {
   var initialHeight = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
-
   var height = parent.item ? parent.item.offsetHeight() + initialHeight : 0;
 
   var _iteratorNormalCompletion3 = true;
@@ -165,7 +161,6 @@ function initializeItemStyle(parent, createStylesConf) {
   try {
     for (var _iterator3 = parent.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
       var item = _step3.value;
-
 
       // let height = initialHeight + item.height;
 
@@ -211,27 +206,7 @@ function initializeItemStyle(parent, createStylesConf) {
 }
 
 function createStyles(parent, createStylesConf) {
-
-  // function initializeItemStyleFixed(item: Item, height) {
-  //   if (!item.styleFixed) {
-  //     let extraStyle = createStylesConf.getFixedExtraStyle(item.level, createStylesConf.identationDistance);
-  //     let zIndex = createStylesConf.lastZIndex++;
-  //     let style = Object.assign(
-  //       {
-  //         position: 'fixed',
-  //         top: height,
-  //         width: `calc(100% - ${item.level * createStylesConf.identationDistance}px)`,
-  //         zIndex,
-  //       },
-  //       extraStyle
-  //     );
-  //     item.styleFixed = style;
-  //   }
-  // }
-
-
   if (parent.fixedChildren) {
-
     /**
      * @type Item
      */
@@ -292,10 +267,8 @@ function createStyles(parent, createStylesConf) {
     var _iteratorError5 = undefined;
 
     try {
-
       for (var _iterator5 = parent.children[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
         var _item = _step5.value;
-
 
         _item.fixedChildren = undefined;
         createStyles(_item, createStylesConf);
@@ -355,12 +328,11 @@ function clearFixedStates(allItens) {
 }
 
 function __calculateStyles(contexto) {
-
   var cache = contexto.cache;
 
   var root = cache.root;
-  if (root === null) {
 
+  if (root === null) {
     root = new Item();
     cache.root = root;
     cache.allItens = [root];
@@ -376,7 +348,6 @@ function __calculateStyles(contexto) {
           itemsOfPreviousLevel.push(item_);
         });
       } else {
-
         var createdItemsInThisLevel = [];
 
         levelItems.forEach(function (item) {
@@ -409,7 +380,6 @@ function __calculateStyles(contexto) {
             }
           }
 
-          ;
           if (previous) {
             var item_ = new Item(item, previous, level);
             cache.allItens.push(item_);
@@ -460,8 +430,8 @@ function __calculateStyles(contexto) {
 
 var defaultFixedExtraStyle = {};
 
-var StickyStackContext = _react2.default.createClass({
-  displayName: 'StickyStackContext',
+var StickyHierarchicalContext = _react2.default.createClass({
+  displayName: 'StickyHierarchicalContext',
 
 
   propTypes: {
@@ -616,7 +586,6 @@ var StickyStackContext = _react2.default.createClass({
     }
   },
   ___calculateStyles: function ___calculateStyles() {
-
     if (!this.__debounced_calculateStyles) {
       this.__debounced_calculateStyles = (0, _debounce2.default)(this._calculateStyles, 10);
     }
@@ -627,8 +596,6 @@ var StickyStackContext = _react2.default.createClass({
     // setTimeout(this._calculateStyles, 0);
   },
   _calculateStyles: function _calculateStyles() {
-
-    // console.log('  2');
     this.styles = [];
     var components = this.components,
         styles = this.styles,
@@ -643,7 +610,8 @@ var StickyStackContext = _react2.default.createClass({
       cache: cache
     };
 
-    var styles_ = __calculateStyles(contexto);
+    // let styles_ = __calculateStyles(contexto);
+    __calculateStyles(contexto);
     // this.styles = styles_;
 
     // this.setState({
@@ -662,4 +630,4 @@ var StickyStackContext = _react2.default.createClass({
   }
 });
 
-exports.default = StickyStackContext;
+exports.default = StickyHierarchicalContext;
