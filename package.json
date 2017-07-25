@@ -1,6 +1,6 @@
 {
   "name": "react-sticky-hierarchical",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Sticky Hierarchical component for React.js",
   "main": "dist/index.js",
   "scripts": {
