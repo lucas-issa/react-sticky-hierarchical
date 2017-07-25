@@ -10,7 +10,7 @@ var _reactAddonsTestUtils2 = _interopRequireDefault(_reactAddonsTestUtils);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-jest.dontMock('../sticky-stack-item');
+jest.dontMock('../sticky-hierarchical-item');
 
 var StickyStackItem = require('../sticky-hierarchical-item').default;
 
@@ -48,7 +48,7 @@ describe('StickyStackItem', function () {
     _reactAddonsTestUtils2.default.renderIntoDocument(_react2.default.createElement(
       FakeContext,
       null,
-      _react2.default.createElement(StickyStackItem, { position: 0 })
+      _react2.default.createElement(StickyStackItem, { hierarchicalLevel: 0 })
     ));
   });
 

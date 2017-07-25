@@ -1,4 +1,4 @@
-jest.dontMock('../sticky-stack-item');
+jest.dontMock('../sticky-hierarchical-item');
 
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
@@ -32,7 +32,7 @@ describe('StickyStackItem', () => {
 
     TestUtils.renderIntoDocument(
       <FakeContext>
-        <StickyStackItem position={0} />
+        <StickyStackItem hierarchicalLevel={0} />
       </FakeContext>
     );
   });

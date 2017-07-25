@@ -10,7 +10,7 @@ var _reactAddonsTestUtils2 = _interopRequireDefault(_reactAddonsTestUtils);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-jest.dontMock('../sticky-stack-context');
+jest.dontMock('../sticky-hierarchical-context');
 
 var StickyStackContext = require('../sticky-hierarchical-context').default;
 

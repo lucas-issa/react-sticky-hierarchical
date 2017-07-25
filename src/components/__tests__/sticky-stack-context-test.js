@@ -1,4 +1,4 @@
-jest.dontMock('../sticky-stack-context');
+jest.dontMock('../sticky-hierarchical-context');
 
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
