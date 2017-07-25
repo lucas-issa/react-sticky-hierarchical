@@ -40,10 +40,12 @@
     "react-dom": "^0.14.3"
   },
   "jest": {
-    "testPathDirs": [
+    "roots": [
       "./src"
     ],
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest"
+    },
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",
