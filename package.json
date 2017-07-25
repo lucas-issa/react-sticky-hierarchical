@@ -1,7 +1,7 @@
 {
-  "name": "react-sticky-stack",
+  "name": "react-sticky-hierarchical",
   "version": "0.0.1",
-  "description": "A Sticky Stack component for React.js",
+  "description": "A Sticky Hierarchical component for React.js",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
@@ -14,7 +14,8 @@
     "Alex Andrews",
     "Ben Davis",
     "Lucas Motta",
-    "Michele Bertoli"
+    "Michele Bertoli",
+    "Lucas Issa"
   ],
   "license": "MIT",
   "devDependencies": {
@@ -53,12 +54,14 @@
   "tags": [
     "react",
     "sticky",
-    "stack"
+    "stack",
+    "hierarchical"
   ],
   "keywords": [
     "react",
     "react-component",
     "sticky",
-    "stack"
+    "stack",
+    "hierarchical"
   ]
 }

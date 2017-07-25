@@ -1,15 +1,20 @@
-[![Build Status](https://travis-ci.org/YPlan/react-sticky-stack.svg?branch=master)](https://travis-ci.org/YPlan/react-sticky-stack)
 
-React Sticky Stack
-==================
+React Sticky Hierarchical
+=========================
 
-A Sticky Stack component for [React.js](http://facebook.github.io/react/)
+A Sticky Hierarchical component for [React.js](http://facebook.github.io/react/)
+
+It is clone of [react-sticky-stack](https://github.com/YPlan/react-sticky-stack) with changes to became hierarchical. 
 
 Installation
 ------------
 
 ```sh
-$ npm install react-sticky-stack --save
+$ yarn add react-sticky-hierarchical
+```
+or
+```sh
+$ npm install react-sticky-hierarchical --save
 ```
 
 Demo
@@ -23,7 +28,7 @@ Usage
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {StickyStackContext, StickyStackItem} from 'react-sticky-stack';
+import {StickyStackContext, StickyStackItem} from 'react-sticky-hierarchical';
 
 const App = React.createClass({
   render() {
@@ -62,11 +67,4 @@ const App = React.createClass({
 });
 
 ReactDOM.render(<App />, document.getElementById('app'));
-```
-
-Test
-----
-
-```sh
-$ npm test
 ```
