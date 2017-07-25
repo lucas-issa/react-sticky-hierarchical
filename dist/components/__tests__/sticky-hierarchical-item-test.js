@@ -12,9 +12,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 jest.dontMock('../sticky-hierarchical-item');
 
-var StickyStackItem = require('../sticky-hierarchical-item').default;
+var StickyHierarchicalItem = require('../sticky-hierarchical-item').default;
 
-describe('StickyStackItem', function () {
+describe('StickyHierarchicalItem', function () {
   var register = void 0;
 
   beforeEach(function () {
@@ -48,7 +48,7 @@ describe('StickyStackItem', function () {
     _reactAddonsTestUtils2.default.renderIntoDocument(_react2.default.createElement(
       FakeContext,
       null,
-      _react2.default.createElement(StickyStackItem, { hierarchicalLevel: 0 })
+      _react2.default.createElement(StickyHierarchicalItem, { hierarchicalLevel: 0 })
     ));
   });
 

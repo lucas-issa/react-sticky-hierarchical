@@ -3,9 +3,9 @@ jest.dontMock('../sticky-hierarchical-item');
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-const StickyStackItem = require('../sticky-hierarchical-item').default;
+const StickyHierarchicalItem = require('../sticky-hierarchical-item').default;
 
-describe('StickyStackItem', () => {
+describe('StickyHierarchicalItem', () => {
   let register;
 
   beforeEach(() => {
@@ -32,7 +32,7 @@ describe('StickyStackItem', () => {
 
     TestUtils.renderIntoDocument(
       <FakeContext>
-        <StickyStackItem hierarchicalLevel={0} />
+        <StickyHierarchicalItem hierarchicalLevel={0} />
       </FakeContext>
     );
   });
