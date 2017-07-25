@@ -13,7 +13,7 @@ class Item {
   // level;
   // children;
 
-  constructor(item=null, parent=null, level=-1) {
+  constructor(item = null, parent = null, level = -1) {
     this.item = item;
     this.parent = parent;
     this.level = level;
@@ -23,7 +23,7 @@ class Item {
     this.children = [];
   }
 
-  print(ident='') {
+  print(ident = '') {
     console.log(`${ident}${this.item && this.item.registrationId} (${this.level}) (${!!this.fixed}) (${this.fixedChildren && this.fixedChildren.item.registrationId})`);
     for (let child of this.children) {
       child.print(ident + '  ');
@@ -35,11 +35,9 @@ class Item {
 function detectFixeds(parent, fixedItens, top = window.pageYOffset + 0, lastFixedHeight = 0, context = {
   lastFixed: undefined,
 }) {
-
   let height = parent.item ? (parent.item.offsetHeight() + lastFixedHeight) : 0;
 
   for (let item of parent.children) {
-
     item.height = height;
 
     // let top1 = top - item.offsetHeight;
@@ -65,7 +63,6 @@ function detectFixeds(parent, fixedItens, top = window.pageYOffset + 0, lastFixe
 }
 
 function createStyle(styles, item) {
-
   let level = item.level;
   let registrationId = item.item.registrationId;
   let style = item.style;
@@ -79,12 +76,10 @@ function createStyle(styles, item) {
   // return true;
 }
 
-function initializeItemStyle(parent, createStylesConf, initialHeight=0) {
-
+function initializeItemStyle(parent, createStylesConf, initialHeight = 0) {
   let height = parent.item ? (parent.item.offsetHeight() + initialHeight) : 0;
 
   for (let item of parent.children) {
-
     // let height = initialHeight + item.height;
 
     if (!item.styleStatic) {
@@ -114,32 +109,11 @@ function initializeItemStyle(parent, createStylesConf, initialHeight=0) {
       );
       item.styleFixed = style;
     }
-
   }
 }
 
 function createStyles(parent, createStylesConf) {
-
-  // function initializeItemStyleFixed(item: Item, height) {
-  //   if (!item.styleFixed) {
-  //     let extraStyle = createStylesConf.getFixedExtraStyle(item.level, createStylesConf.identationDistance);
-  //     let zIndex = createStylesConf.lastZIndex++;
-  //     let style = Object.assign(
-  //       {
-  //         position: 'fixed',
-  //         top: height,
-  //         width: `calc(100% - ${item.level * createStylesConf.identationDistance}px)`,
-  //         zIndex,
-  //       },
-  //       extraStyle
-  //     );
-  //     item.styleFixed = style;
-  //   }
-  // }
-
-
   if (parent.fixedChildren) {
-
     /**
      * @type Item
      */
@@ -175,9 +149,7 @@ function createStyles(parent, createStylesConf) {
       }
     }
   } else {
-
     for (let item of parent.children) {
-
       item.fixedChildren = undefined;
       createStyles(item, createStylesConf);
 
@@ -201,12 +173,11 @@ function clearFixedStates(allItens) {
 }
 
 function __calculateStyles(contexto) {
-
   let cache = contexto.cache;
 
   let root = cache.root;
-  if (root === null) {
 
+  if (root === null) {
     root = new Item();
     cache.root = root;
     cache.allItens = [ root ];
@@ -221,9 +192,7 @@ function __calculateStyles(contexto) {
           cache.allItens.push(item_);
           itemsOfPreviousLevel.push(item_);
         });
-
       } else {
-
         let createdItemsInThisLevel = [];
 
         levelItems.forEach((item) => {
@@ -233,7 +202,7 @@ function __calculateStyles(contexto) {
               break;
             }
             previous = itemOfPreviousLevel;
-          };
+          }
           if (previous) {
             let item_ = new Item(item, previous, level);
             cache.allItens.push(item_);
@@ -295,10 +264,6 @@ const StickyHierarchicalContext = React.createClass({
      */
     getFixedExtraStyle: React.PropTypes.func,
     identationDistance: React.PropTypes.number,
-    // TODO: Adicionar uma propriedade para permitir diminuir a largura do fixed (além da identação)
-    // TODO: Usar esse parâmetro quando o menu aparece empurrando a tela.
-    // TODO: Limpar o código, documenta-lo e alterar o Readme.
-    // TODO: Renomear a propriedade position para nestingLevel.
   },
 
   childContextTypes: {
@@ -413,7 +378,6 @@ const StickyHierarchicalContext = React.createClass({
     return {
       registrationId,
       unregister: () => {
-
         const {components, styles} = this;
 
         // const {items, styles} = this.state;
@@ -429,7 +393,7 @@ const StickyHierarchicalContext = React.createClass({
         //     items,
         //     styles,
         // });
-      }
+      },
     };
   },
 
@@ -438,7 +402,7 @@ const StickyHierarchicalContext = React.createClass({
 
     if (registrationRef && styles[level] && styles[level][registrationRef.registrationId]) {
       // console.log('_getStyle: ', styles[level][registrationRef.registrationId]);
-        return styles[level][registrationRef.registrationId];
+      return styles[level][registrationRef.registrationId];
     } else {
       // console.log('_getStyle (static): ', staticStyle);
       return staticStyle;
@@ -446,7 +410,6 @@ const StickyHierarchicalContext = React.createClass({
   },
 
   ___calculateStyles() {
-
     if (!this.__debounced_calculateStyles) {
       this.__debounced_calculateStyles = debounce(this._calculateStyles, 10);
     }
@@ -458,8 +421,6 @@ const StickyHierarchicalContext = React.createClass({
   },
 
   _calculateStyles() {
-
-    // console.log('  2');
     this.styles = [];
     const {components, styles, props, cache} = this;
 
@@ -470,7 +431,8 @@ const StickyHierarchicalContext = React.createClass({
       cache,
     };
 
-    let styles_ = __calculateStyles(contexto);
+    // let styles_ = __calculateStyles(contexto);
+    __calculateStyles(contexto);
     // this.styles = styles_;
 
     // this.setState({

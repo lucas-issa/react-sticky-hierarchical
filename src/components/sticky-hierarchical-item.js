@@ -23,22 +23,15 @@ const StickyHierarchicalItem = React.createClass({
   componentDidMount() {
     const {register, clearCache} = this.context;
     const {hierarchicalLevel} = this.props;
-    const {
-      offsetTop,
-      offsetHeight,
-      // clientHeight
-    } = this.domRef2;
 
-
-
-    this.offsetTop = offsetTop;
-    this.offsetHeight = offsetHeight;
-    // this.clientHeight = clientHeight;
+    this.offsetTop = this.domRef2.offsetTop;
+    this.offsetHeight = this.domRef2.offsetHeight;
+    // this.clientHeight = this.domRef2.clientHeight;
     new ResizeSensor(this.domRef2, () => {
       const {
         offsetTop,
         offsetHeight,
-        //clientHeight,
+        // clientHeight,
       } = this.domRef2;
 
       // console.log('Changed to ', this.clientHeight, '!=', clientHeight);
@@ -55,33 +48,7 @@ const StickyHierarchicalItem = React.createClass({
         // Notify change to sticky-stack-context
         clearCache();
       }
-
     });
-
-
-//     let observer = new MutationObserver(function(mutations) {
-//       mutations.forEach(function(mutation) {
-//         console.log('mutation.type: ', mutation.type);
-//       });
-//     });
-//
-// // configuration of the observer:
-//     var config = {
-//       attributes: true, childList: true, characterData: true,
-//       subtree: true,
-//       attributeOldValue: true,
-//       characterDataOldValue: true,
-//     };
-//
-//
-// // pass in the target node, as well as the observer options
-//     observer.observe(this.domRef, config);
-//
-// // later, you can stop observing
-// //     observer.disconnect();
-
-
-
 
 
     this.registrationRef = register(
@@ -91,17 +58,17 @@ const StickyHierarchicalItem = React.createClass({
       // offsetHeight
     );
 
-    this._setHeight(offsetHeight);
+    this._setHeight(this.offsetHeight);
   },
 
   componentDidUpdate() {
-    if (this.domRef.offsetHeight != this.state.height) {
+    if (this.domRef.offsetHeight !== this.state.height) {
       this._setHeight(this.domRef.offsetHeight);
     }
   },
 
   componentWillUnmount() {
-      this.registrationRef.unregister();
+    this.registrationRef.unregister();
   },
 
   _setHeight(height) {
