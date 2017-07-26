@@ -69,7 +69,8 @@
 	        { className: 'content', style: {
 	            position: 'fixed',
 	            top: 0,
-	            width: '100%'
+	            width: '100%',
+	            zIndex: 100
 	          }
 	        },
 	        _react2.default.createElement(

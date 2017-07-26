@@ -10,6 +10,7 @@ const App = React.createClass({
           position: 'fixed',
           top: 0,
           width: '100%',
+          zIndex: 100,
         }}
         >
           <div className="block block--doc">
