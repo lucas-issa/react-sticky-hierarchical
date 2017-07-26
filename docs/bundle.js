@@ -87,13 +87,13 @@
 	        )
 	      ),
 	      _react2.default.createElement(
-	        _dist.StickyStackContext,
+	        _dist.StickyHierarchicalContext,
 	        null,
 	        _react2.default.createElement('div', { className: 'divider divider--short' }),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 0 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 0 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -115,8 +115,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 1 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 1 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -129,8 +129,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 2 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 2 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -143,8 +143,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 3 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 3 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -157,8 +157,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 3 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 3 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -171,8 +171,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 3 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 3 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -185,8 +185,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 2 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 2 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -199,8 +199,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 1 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 1 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -213,8 +213,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 1 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 1 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -227,8 +227,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 2 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 2 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -241,8 +241,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 3 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 3 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -255,8 +255,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 3 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 3 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -269,8 +269,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 4 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 4 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -287,8 +287,8 @@
 	        ),
 	        _react2.default.createElement('div', { className: 'divider divider--short' }),
 	        _react2.default.createElement(
-	          _dist.StickyStackItem,
-	          { position: 5 },
+	          _dist.StickyHierarchicalItem,
+	          { hierarchicalLevel: 5 },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'content' },
@@ -20022,22 +20022,22 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.StickyStackItem = exports.StickyStackContext = undefined;
+	exports.StickyHierarchicalItem = exports.StickyHierarchicalContext = undefined;
 
-	var _stickyStackContext = __webpack_require__(160);
+	var _stickyHierarchicalContext = __webpack_require__(160);
 
-	var _stickyStackContext2 = _interopRequireDefault(_stickyStackContext);
+	var _stickyHierarchicalContext2 = _interopRequireDefault(_stickyHierarchicalContext);
 
-	var _stickyStackItem = __webpack_require__(173);
+	var _stickyHierarchicalItem = __webpack_require__(173);
 
-	var _stickyStackItem2 = _interopRequireDefault(_stickyStackItem);
+	var _stickyHierarchicalItem2 = _interopRequireDefault(_stickyHierarchicalItem);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
-	exports.StickyStackContext = _stickyStackContext2.default;
-	exports.StickyStackItem = _stickyStackItem2.default;
+	exports.StickyHierarchicalContext = _stickyHierarchicalContext2.default;
+	exports.StickyHierarchicalItem = _stickyHierarchicalItem2.default;
 
 /***/ }),
 /* 160 */
@@ -20195,7 +20195,6 @@
 	}
 
 	function createStyle(styles, item) {
-
 	  var level = item.level;
 	  var registrationId = item.item.registrationId;
 	  var style = item.style;
@@ -20266,27 +20265,7 @@
 	}
 
 	function createStyles(parent, createStylesConf) {
-
-	  // function initializeItemStyleFixed(item: Item, height) {
-	  //   if (!item.styleFixed) {
-	  //     let extraStyle = createStylesConf.getFixedExtraStyle(item.level, createStylesConf.identationDistance);
-	  //     let zIndex = createStylesConf.lastZIndex++;
-	  //     let style = Object.assign(
-	  //       {
-	  //         position: 'fixed',
-	  //         top: height,
-	  //         width: `calc(100% - ${item.level * createStylesConf.identationDistance}px)`,
-	  //         zIndex,
-	  //       },
-	  //       extraStyle
-	  //     );
-	  //     item.styleFixed = style;
-	  //   }
-	  // }
-
-
 	  if (parent.fixedChildren) {
-
 	    /**
 	     * @type Item
 	     */
@@ -20347,7 +20326,6 @@
 	    var _iteratorError5 = undefined;
 
 	    try {
-
 	      for (var _iterator5 = parent.children[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
 	        var _item = _step5.value;
 
@@ -20409,12 +20387,11 @@
 	}
 
 	function __calculateStyles(contexto) {
-
 	  var cache = contexto.cache;
 
 	  var root = cache.root;
-	  if (root === null) {
 
+	  if (root === null) {
 	    root = new Item();
 	    cache.root = root;
 	    cache.allItens = [root];
@@ -20430,7 +20407,6 @@
 	          itemsOfPreviousLevel.push(item_);
 	        });
 	      } else {
-
 	        var createdItemsInThisLevel = [];
 
 	        levelItems.forEach(function (item) {
@@ -20463,7 +20439,6 @@
 	            }
 	          }
 
-	          ;
 	          if (previous) {
 	            var item_ = new Item(item, previous, level);
 	            cache.allItens.push(item_);
@@ -20514,8 +20489,8 @@
 
 	var defaultFixedExtraStyle = {};
 
-	var StickyStackContext = _react2.default.createClass({
-	  displayName: 'StickyStackContext',
+	var StickyHierarchicalContext = _react2.default.createClass({
+	  displayName: 'StickyHierarchicalContext',
 
 	  propTypes: {
 	    children: _react2.default.PropTypes.any,
@@ -20668,7 +20643,6 @@
 	    }
 	  },
 	  ___calculateStyles: function ___calculateStyles() {
-
 	    if (!this.__debounced_calculateStyles) {
 	      this.__debounced_calculateStyles = (0, _debounce2.default)(this._calculateStyles, 10);
 	    }
@@ -20679,8 +20653,6 @@
 	    // setTimeout(this._calculateStyles, 0);
 	  },
 	  _calculateStyles: function _calculateStyles() {
-
-	    // console.log('  2');
 	    this.styles = [];
 	    var components = this.components,
 	        styles = this.styles,
@@ -20694,7 +20666,8 @@
 	      cache: cache
 	    };
 
-	    var styles_ = __calculateStyles(contexto);
+	    // let styles_ = __calculateStyles(contexto);
+	    __calculateStyles(contexto);
 	    // this.styles = styles_;
 
 	    // this.setState({
@@ -20708,7 +20681,7 @@
 	  }
 	});
 
-	exports.default = StickyStackContext;
+	exports.default = StickyHierarchicalContext;
 
 /***/ }),
 /* 161 */
@@ -21286,12 +21259,12 @@
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
-	var StickyStackItem = _react2.default.createClass({
-	  displayName: 'StickyStackItem',
+	var StickyHierarchicalItem = _react2.default.createClass({
+	  displayName: 'StickyHierarchicalItem',
 
 	  propTypes: {
 	    children: _react2.default.PropTypes.any,
-	    position: _react2.default.PropTypes.number
+	    hierarchicalLevel: _react2.default.PropTypes.number
 	  },
 
 	  contextTypes: {
@@ -21311,18 +21284,15 @@
 	    var _context = this.context,
 	        register = _context.register,
 	        clearCache = _context.clearCache;
-	    var position = this.props.position;
-	    var _domRef = this.domRef2,
-	        offsetTop = _domRef.offsetTop,
-	        offsetHeight = _domRef.offsetHeight;
+	    var hierarchicalLevel = this.props.hierarchicalLevel;
 
-	    this.offsetTop = offsetTop;
-	    this.offsetHeight = offsetHeight;
-	    // this.clientHeight = clientHeight;
+	    this.offsetTop = this.domRef2.offsetTop;
+	    this.offsetHeight = this.domRef2.offsetHeight;
+	    // this.clientHeight = this.domRef2.clientHeight;
 	    new _ResizeSensor2.default(this.domRef2, function () {
-	      var _domRef2 = _this.domRef2,
-	          offsetTop = _domRef2.offsetTop,
-	          offsetHeight = _domRef2.offsetHeight;
+	      var _domRef = _this.domRef2,
+	          offsetTop = _domRef.offsetTop,
+	          offsetHeight = _domRef.offsetHeight;
 
 	      // console.log('Changed to ', this.clientHeight, '!=', clientHeight);
 	      // if (clientHeight !== this.clientHeight) {
@@ -21340,37 +21310,15 @@
 	      }
 	    });
 
-	    //     let observer = new MutationObserver(function(mutations) {
-	    //       mutations.forEach(function(mutation) {
-	    //         console.log('mutation.type: ', mutation.type);
-	    //       });
-	    //     });
-	    //
-	    // // configuration of the observer:
-	    //     var config = {
-	    //       attributes: true, childList: true, characterData: true,
-	    //       subtree: true,
-	    //       attributeOldValue: true,
-	    //       characterDataOldValue: true,
-	    //     };
-	    //
-	    //
-	    // // pass in the target node, as well as the observer options
-	    //     observer.observe(this.domRef, config);
-	    //
-	    // // later, you can stop observing
-	    // //     observer.disconnect();
-
-
-	    this.registrationRef = register(this, position
+	    this.registrationRef = register(this, hierarchicalLevel
 	    // offsetTop,
 	    // offsetHeight
 	    );
 
-	    this._setHeight(offsetHeight);
+	    this._setHeight(this.offsetHeight);
 	  },
 	  componentDidUpdate: function componentDidUpdate() {
-	    if (this.domRef.offsetHeight != this.state.height) {
+	    if (this.domRef.offsetHeight !== this.state.height) {
 	      this._setHeight(this.domRef.offsetHeight);
 	    }
 	  },
@@ -21388,18 +21336,18 @@
 	    var getStyle = this.context.getStyle;
 	    var _props = this.props,
 	        children = _props.children,
-	        position = _props.position;
+	        hierarchicalLevel = _props.hierarchicalLevel;
 	    var height = this.state.height;
 
 	    return _react2.default.createElement('div', { ref: function ref(domRef) {
 	        return _this2.domRef = domRef;
 	      }, style: { height: height } }, _react2.default.createElement('div', { ref: function ref(domRef2) {
 	        return _this2.domRef2 = domRef2;
-	      }, style: getStyle(position, this.registrationRef) }, children));
+	      }, style: getStyle(hierarchicalLevel, this.registrationRef) }, children));
 	  }
 	});
 
-	exports.default = StickyStackItem;
+	exports.default = StickyHierarchicalItem;
 
 /***/ }),
 /* 174 */
