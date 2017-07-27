@@ -35,25 +35,27 @@ class Item {
 function detectFixeds(parent, fixedItens, top = window.pageYOffset + 0, lastFixedHeight = 0, context = {
   lastFixed: undefined,
 }) {
-  let height = parent.item ? (parent.item.offsetHeight() + lastFixedHeight) : 0;
+  const parentOffsetHeight = parent.item ? parent.item.offsetHeight() : 0;
+  const height = parentOffsetHeight + lastFixedHeight;
 
   for (let item of parent.children) {
+    const itemOffsetTop = item.item.offsetTop();
     item.height = height;
 
     // let top1 = top - item.offsetHeight;
     // let top2 = top;
     // let top3 = top + item.offsetHeight;
 
-    if (item.item.offsetTop() <= (top + height)) {
+    if (itemOffsetTop <= (top + height)) {
       item.fixed = true;
       fixedItens.push(item);
       context.lastFixed = item;
       parent.fixedChildren = item;
 
       detectFixeds(item, fixedItens, top, height, context);
-      parent.heightWithChildren = item.heightWithChildren + (parent.item ? parent.item.offsetHeight() : 0);
+      parent.heightWithChildren = item.heightWithChildren + parentOffsetHeight;
     } else {
-      while (context.lastFixed && item.item.offsetTop() <= (top + context.lastFixed.height)) {
+      while (context.lastFixed && itemOffsetTop <= (top + context.lastFixed.height)) {
         context.lastFixed.fixed = false;
         context.lastFixed.parent.fixedChildren = undefined;
         context.lastFixed = fixedItens.pop();
@@ -124,6 +126,7 @@ function createStyles(parent, createStylesConf) {
 
     // initializeItemStyleFixed(itemFixed, height);
     if (itemFixed.style !== itemFixed.styleFixed) {
+      // console.log('change to styleFixed');
       itemFixed.style = itemFixed.styleFixed;
       if (createStyle(createStylesConf.styles, itemFixed)) {
         // console.log('forceUpdate: ', itemFixed.style);
@@ -141,6 +144,7 @@ function createStyles(parent, createStylesConf) {
         createStyles(item, createStylesConf);
 
         if (item.style !== item.styleStatic) {
+          // console.log('change to styleStatic 1');
           item.style = item.styleStatic;
           if (createStyle(createStylesConf.styles, item)) {
             item.item.component.forceUpdate();
@@ -155,6 +159,7 @@ function createStyles(parent, createStylesConf) {
 
       // initializeItemStyle(item);
       if (item.style !== item.styleStatic) {
+        // console.log('change to styleStatic 2');
         item.style = item.styleStatic;
         if (createStyle(createStylesConf.styles, item)) {
           item.item.component.forceUpdate();
@@ -168,7 +173,7 @@ function clearFixedStates(allItens) {
   for (let item of allItens) {
     item.fixed = false;
     item.fixedChildren = undefined;
-    item.style = undefined;
+    // item.style = undefined;
   }
 }
 
@@ -196,9 +201,10 @@ function __calculateStyles(contexto) {
         let createdItemsInThisLevel = [];
 
         levelItems.forEach((item) => {
+          const itemOffsetTop = item.offsetTop();
           let previous;
           for (let itemOfPreviousLevel of itemsOfPreviousLevel) {
-            if (item.offsetTop() < itemOfPreviousLevel.item.offsetTop()) {
+            if (itemOffsetTop < itemOfPreviousLevel.item.offsetTop()) {
               break;
             }
             previous = itemOfPreviousLevel;
@@ -269,7 +275,7 @@ const StickyHierarchicalContext = React.createClass({
   childContextTypes: {
     getStyle: React.PropTypes.func,
     register: React.PropTypes.func,
-    clearCache: React.PropTypes.func,
+    clearCacheAndUpdate: React.PropTypes.func,
   },
 
   getDefaultProps() {
@@ -293,17 +299,19 @@ const StickyHierarchicalContext = React.createClass({
 
   componentDidMount() {
     window.addEventListener('scroll', this.___calculateStyles);
+    window.addEventListener('touchmove', this.___calculateStyles);
   },
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.___calculateStyles);
+    window.removeEventListener('touchmove', this.___calculateStyles);
   },
 
   getChildContext() {
     return {
       getStyle: this._getStyle,
       register: this._register,
-      clearCache: this._clearCache,
+      clearCacheAndUpdate: this._clearCacheAndUpdate,
     };
   },
 
@@ -316,6 +324,11 @@ const StickyHierarchicalContext = React.createClass({
     if (this.cache.fixedItens) {
       delete this.cache.fixedItens;
     }
+  },
+
+  _clearCacheAndUpdate() {
+    this._clearCache();
+    this.___calculateStyles();
   },
 
   updateFixedStyles() {
@@ -409,26 +422,15 @@ const StickyHierarchicalContext = React.createClass({
     }
   },
 
-  ___calculateStyles() {
-    if (!this.__debounced_calculateStyles) {
-      this.__debounced_calculateStyles = debounce(this._calculateStyles, 10);
-    }
-    // console.log('1');
-    this.__debounced_calculateStyles();
-
-    // this._calculateStyles();
-    // setTimeout(this._calculateStyles, 0);
-  },
-
   _calculateStyles() {
+    // console.log('_calculateStyles');
     this.styles = [];
-    const {components, styles, props, cache} = this;
 
     let contexto = {
-      props,
-      components,
-      styles,
-      cache,
+      props: this.props,
+      components: this.components,
+      styles: this.styles,
+      cache: this.cache,
     };
 
     // let styles_ = __calculateStyles(contexto);
@@ -438,6 +440,28 @@ const StickyHierarchicalContext = React.createClass({
     // this.setState({
     //   styles,
     // });
+  },
+
+  // calculating: false,
+
+  ___calculateStyles() {
+    // if (!this.__debounced_calculateStyles) {
+    //   this.__debounced_calculateStyles = debounce(this._calculateStyles, 0);
+    // }
+    // this.__debounced_calculateStyles();
+
+    // if (!this.calculating) {
+    //   this.calculating = true;
+    //   window.requestAnimationFrame(() => {
+    //     this._calculateStyles();
+    //     this.calculating = false;
+    //   });
+    // } else {
+    //   console.log('skip');
+    // }
+
+    this._calculateStyles();
+    // setTimeout(this._calculateStyles, 0);
   },
 
   render() {

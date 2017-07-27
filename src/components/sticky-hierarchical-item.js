@@ -11,7 +11,7 @@ const StickyHierarchicalItem = React.createClass({
   contextTypes: {
     getStyle: React.PropTypes.func,
     register: React.PropTypes.func,
-    clearCache: React.PropTypes.func,
+    clearCacheAndUpdate: React.PropTypes.func,
   },
 
   getInitialState() {
@@ -21,7 +21,7 @@ const StickyHierarchicalItem = React.createClass({
   },
 
   componentDidMount() {
-    const {register, clearCache} = this.context;
+    const {register, clearCacheAndUpdate} = this.context;
     const {hierarchicalLevel} = this.props;
 
     this.offsetTop = this.domRef2.offsetTop;
@@ -46,7 +46,7 @@ const StickyHierarchicalItem = React.createClass({
         this.offsetTop = offsetTop;
         this.offsetHeight = offsetHeight;
         // Notify change to sticky-stack-context
-        clearCache();
+        clearCacheAndUpdate();
       }
     });
 
@@ -62,8 +62,9 @@ const StickyHierarchicalItem = React.createClass({
   },
 
   componentDidUpdate() {
-    if (this.domRef.offsetHeight !== this.state.height) {
-      this._setHeight(this.domRef.offsetHeight);
+    const domRefOffsetHeight = this.domRef.offsetHeight;
+    if (domRefOffsetHeight !== this.state.height) {
+      this._setHeight(domRefOffsetHeight);
     }
   },
 

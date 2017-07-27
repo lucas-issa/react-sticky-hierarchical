@@ -26,7 +26,7 @@ var StickyHierarchicalItem = _react2.default.createClass({
   contextTypes: {
     getStyle: _react2.default.PropTypes.func,
     register: _react2.default.PropTypes.func,
-    clearCache: _react2.default.PropTypes.func
+    clearCacheAndUpdate: _react2.default.PropTypes.func
   },
 
   getInitialState: function getInitialState() {
@@ -39,7 +39,7 @@ var StickyHierarchicalItem = _react2.default.createClass({
 
     var _context = this.context,
         register = _context.register,
-        clearCache = _context.clearCache;
+        clearCacheAndUpdate = _context.clearCacheAndUpdate;
     var hierarchicalLevel = this.props.hierarchicalLevel;
 
 
@@ -63,7 +63,7 @@ var StickyHierarchicalItem = _react2.default.createClass({
         _this.offsetTop = offsetTop;
         _this.offsetHeight = offsetHeight;
         // Notify change to sticky-stack-context
-        clearCache();
+        clearCacheAndUpdate();
       }
     });
 
@@ -75,8 +75,9 @@ var StickyHierarchicalItem = _react2.default.createClass({
     this._setHeight(this.offsetHeight);
   },
   componentDidUpdate: function componentDidUpdate() {
-    if (this.domRef.offsetHeight !== this.state.height) {
-      this._setHeight(this.domRef.offsetHeight);
+    var domRefOffsetHeight = this.domRef.offsetHeight;
+    if (domRefOffsetHeight !== this.state.height) {
+      this._setHeight(domRefOffsetHeight);
     }
   },
   componentWillUnmount: function componentWillUnmount() {
