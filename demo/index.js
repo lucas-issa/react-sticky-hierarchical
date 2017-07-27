@@ -22,7 +22,6 @@ const App = React.createClass({
 
           <div className="divider divider--short" />
 
-          <div className="divider" />
           <StickyHierarchicalItem hierarchicalLevel={0}>
             <div className="content">
               <div className="logo">

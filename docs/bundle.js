@@ -91,7 +91,6 @@
 	        _dist.StickyHierarchicalContext,
 	        null,
 	        _react2.default.createElement('div', { className: 'divider divider--short' }),
-	        _react2.default.createElement('div', { className: 'divider' }),
 	        _react2.default.createElement(
 	          _dist.StickyHierarchicalItem,
 	          { hierarchicalLevel: 0 },
@@ -20147,7 +20146,8 @@
 	    lastFixed: undefined
 	  };
 
-	  var height = parent.item ? parent.item.offsetHeight() + lastFixedHeight : 0;
+	  var parentOffsetHeight = parent.item ? parent.item.offsetHeight() : 0;
+	  var height = parentOffsetHeight + lastFixedHeight;
 
 	  var _iteratorNormalCompletion2 = true;
 	  var _didIteratorError2 = false;
@@ -20157,22 +20157,23 @@
 	    for (var _iterator2 = parent.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
 	      var item = _step2.value;
 
+	      var itemOffsetTop = item.item.offsetTop();
 	      item.height = height;
 
 	      // let top1 = top - item.offsetHeight;
 	      // let top2 = top;
 	      // let top3 = top + item.offsetHeight;
 
-	      if (item.item.offsetTop() <= top + height) {
+	      if (itemOffsetTop <= top + height) {
 	        item.fixed = true;
 	        fixedItens.push(item);
 	        context.lastFixed = item;
 	        parent.fixedChildren = item;
 
 	        detectFixeds(item, fixedItens, top, height, context);
-	        parent.heightWithChildren = item.heightWithChildren + (parent.item ? parent.item.offsetHeight() : 0);
+	        parent.heightWithChildren = item.heightWithChildren + parentOffsetHeight;
 	      } else {
-	        while (context.lastFixed && item.item.offsetTop() <= top + context.lastFixed.height) {
+	        while (context.lastFixed && itemOffsetTop <= top + context.lastFixed.height) {
 	          context.lastFixed.fixed = false;
 	          context.lastFixed.parent.fixedChildren = undefined;
 	          context.lastFixed = fixedItens.pop();
@@ -20277,6 +20278,7 @@
 
 	    // initializeItemStyleFixed(itemFixed, height);
 	    if (itemFixed.style !== itemFixed.styleFixed) {
+	      // console.log('change to styleFixed');
 	      itemFixed.style = itemFixed.styleFixed;
 	      if (createStyle(createStylesConf.styles, itemFixed)) {
 	        // console.log('forceUpdate: ', itemFixed.style);
@@ -20300,6 +20302,7 @@
 	          createStyles(item, createStylesConf);
 
 	          if (item.style !== item.styleStatic) {
+	            // console.log('change to styleStatic 1');
 	            item.style = item.styleStatic;
 	            if (createStyle(createStylesConf.styles, item)) {
 	              item.item.component.forceUpdate();
@@ -20335,6 +20338,7 @@
 
 	        // initializeItemStyle(item);
 	        if (_item.style !== _item.styleStatic) {
+	          // console.log('change to styleStatic 2');
 	          _item.style = _item.styleStatic;
 	          if (createStyle(createStylesConf.styles, _item)) {
 	            _item.item.component.forceUpdate();
@@ -20369,7 +20373,7 @@
 
 	      item.fixed = false;
 	      item.fixedChildren = undefined;
-	      item.style = undefined;
+	      // item.style = undefined;
 	    }
 	  } catch (err) {
 	    _didIteratorError6 = true;
@@ -20411,6 +20415,7 @@
 	        var createdItemsInThisLevel = [];
 
 	        levelItems.forEach(function (item) {
+	          var itemOffsetTop = item.offsetTop();
 	          var previous = void 0;
 	          var _iteratorNormalCompletion7 = true;
 	          var _didIteratorError7 = false;
@@ -20420,7 +20425,7 @@
 	            for (var _iterator7 = itemsOfPreviousLevel[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
 	              var itemOfPreviousLevel = _step7.value;
 
-	              if (item.offsetTop() < itemOfPreviousLevel.item.offsetTop()) {
+	              if (itemOffsetTop < itemOfPreviousLevel.item.offsetTop()) {
 	                break;
 	              }
 	              previous = itemOfPreviousLevel;
@@ -20505,7 +20510,7 @@
 	  childContextTypes: {
 	    getStyle: _react2.default.PropTypes.func,
 	    register: _react2.default.PropTypes.func,
-	    clearCache: _react2.default.PropTypes.func
+	    clearCacheAndUpdate: _react2.default.PropTypes.func
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -20528,16 +20533,28 @@
 	    };
 	  },
 	  componentDidMount: function componentDidMount() {
-	    window.addEventListener('scroll', this.___calculateStyles);
+	    var _this = this;
+
+	    // window.addEventListener('scroll', this.___calculateStyles);
+	    // window.addEventListener('touchmove', this.___calculateStyles);
+	    window.addEventListener('scroll', function () {
+	      // console.log('scroll: ', window.scrollY);
+	      _this.___calculateStyles();
+	    });
+	    // window.addEventListener('touchmove', () => {
+	    //   console.log('touchmove');
+	    //   this.___calculateStyles();
+	    // });
 	  },
 	  componentWillUnmount: function componentWillUnmount() {
 	    window.removeEventListener('scroll', this.___calculateStyles);
+	    // window.removeEventListener('touchmove', this.___calculateStyles);
 	  },
 	  getChildContext: function getChildContext() {
 	    return {
 	      getStyle: this._getStyle,
 	      register: this._register,
-	      clearCache: this._clearCache
+	      clearCacheAndUpdate: this._clearCacheAndUpdate
 	    };
 	  },
 	  _clearCache: function _clearCache() {
@@ -20550,12 +20567,16 @@
 	      delete this.cache.fixedItens;
 	    }
 	  },
+	  _clearCacheAndUpdate: function _clearCacheAndUpdate() {
+	    this._clearCache();
+	    this.___calculateStyles();
+	  },
 	  updateFixedStyles: function updateFixedStyles() {
 	    this._clearCache();
 	    this._calculateStyles();
 	  },
 	  _register: function _register(component, level) {
-	    var _this = this;
+	    var _this2 = this;
 
 	    // const {items} = this.state;
 	    var components = this.components;
@@ -20612,8 +20633,8 @@
 	    return {
 	      registrationId: registrationId,
 	      unregister: function unregister() {
-	        var components = _this.components,
-	            styles = _this.styles;
+	        var components = _this2.components,
+	            styles = _this2.styles;
 
 	        // const {items, styles} = this.state;
 	        // delete items[level][registrationId];
@@ -20643,28 +20664,15 @@
 	      return staticStyle;
 	    }
 	  },
-	  ___calculateStyles: function ___calculateStyles() {
-	    if (!this.__debounced_calculateStyles) {
-	      this.__debounced_calculateStyles = (0, _debounce2.default)(this._calculateStyles, 10);
-	    }
-	    // console.log('1');
-	    this.__debounced_calculateStyles();
-
-	    // this._calculateStyles();
-	    // setTimeout(this._calculateStyles, 0);
-	  },
 	  _calculateStyles: function _calculateStyles() {
+	    // console.log('_calculateStyles');
 	    this.styles = [];
-	    var components = this.components,
-	        styles = this.styles,
-	        props = this.props,
-	        cache = this.cache;
 
 	    var contexto = {
-	      props: props,
-	      components: components,
-	      styles: styles,
-	      cache: cache
+	      props: this.props,
+	      components: this.components,
+	      styles: this.styles,
+	      cache: this.cache
 	    };
 
 	    // let styles_ = __calculateStyles(contexto);
@@ -20674,6 +20682,28 @@
 	    // this.setState({
 	    //   styles,
 	    // });
+	  },
+
+	  // calculating: false,
+
+	  ___calculateStyles: function ___calculateStyles() {
+	    // if (!this.__debounced_calculateStyles) {
+	    //   this.__debounced_calculateStyles = debounce(this._calculateStyles, 0);
+	    // }
+	    // this.__debounced_calculateStyles();
+
+	    // if (!this.calculating) {
+	    //   this.calculating = true;
+	    //   window.requestAnimationFrame(() => {
+	    //     this._calculateStyles();
+	    //     this.calculating = false;
+	    //   });
+	    // } else {
+	    //   console.log('skip');
+	    // }
+
+	    this._calculateStyles();
+	    // setTimeout(this._calculateStyles, 0);
 	  },
 	  render: function render() {
 	    var children = this.props.children;
@@ -21271,7 +21301,7 @@
 	  contextTypes: {
 	    getStyle: _react2.default.PropTypes.func,
 	    register: _react2.default.PropTypes.func,
-	    clearCache: _react2.default.PropTypes.func
+	    clearCacheAndUpdate: _react2.default.PropTypes.func
 	  },
 
 	  getInitialState: function getInitialState() {
@@ -21284,7 +21314,7 @@
 
 	    var _context = this.context,
 	        register = _context.register,
-	        clearCache = _context.clearCache;
+	        clearCacheAndUpdate = _context.clearCacheAndUpdate;
 	    var hierarchicalLevel = this.props.hierarchicalLevel;
 
 	    this.offsetTop = this.domRef2.offsetTop;
@@ -21307,7 +21337,7 @@
 	        _this.offsetTop = offsetTop;
 	        _this.offsetHeight = offsetHeight;
 	        // Notify change to sticky-stack-context
-	        clearCache();
+	        clearCacheAndUpdate();
 	      }
 	    });
 
@@ -21319,8 +21349,9 @@
 	    this._setHeight(this.offsetHeight);
 	  },
 	  componentDidUpdate: function componentDidUpdate() {
-	    if (this.domRef.offsetHeight !== this.state.height) {
-	      this._setHeight(this.domRef.offsetHeight);
+	    var domRefOffsetHeight = this.domRef.offsetHeight;
+	    if (domRefOffsetHeight !== this.state.height) {
+	      this._setHeight(domRefOffsetHeight);
 	    }
 	  },
 	  componentWillUnmount: function componentWillUnmount() {
