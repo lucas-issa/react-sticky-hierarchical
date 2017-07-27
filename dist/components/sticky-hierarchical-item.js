@@ -46,7 +46,7 @@ var StickyHierarchicalItem = _react2.default.createClass({
     this.offsetTop = this.domRef2.offsetTop;
     this.offsetHeight = this.domRef2.offsetHeight;
     // this.clientHeight = this.domRef2.clientHeight;
-    new _ResizeSensor2.default(this.domRef2, function () {
+    this.resizeSensorCallback = function () {
       var _domRef = _this.domRef2,
           offsetTop = _domRef.offsetTop,
           offsetHeight = _domRef.offsetHeight;
@@ -65,7 +65,8 @@ var StickyHierarchicalItem = _react2.default.createClass({
         // Notify change to sticky-stack-context
         clearCacheAndUpdate();
       }
-    });
+    };
+    this.resizeSensor = new _ResizeSensor2.default(this.domRef2, this.resizeSensorCallback);
 
     this.registrationRef = register(this, hierarchicalLevel
     // offsetTop,
@@ -81,6 +82,8 @@ var StickyHierarchicalItem = _react2.default.createClass({
     }
   },
   componentWillUnmount: function componentWillUnmount() {
+    this.resizeSensor.detach(this.resizeSensorCallback);
+    this.resizeSensor.detach();
     this.registrationRef.unregister();
   },
   _setHeight: function _setHeight(height) {

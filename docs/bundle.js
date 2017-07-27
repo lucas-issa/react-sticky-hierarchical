@@ -20533,22 +20533,12 @@
 	    };
 	  },
 	  componentDidMount: function componentDidMount() {
-	    var _this = this;
-
-	    // window.addEventListener('scroll', this.___calculateStyles);
-	    // window.addEventListener('touchmove', this.___calculateStyles);
-	    window.addEventListener('scroll', function () {
-	      // console.log('scroll: ', window.scrollY);
-	      _this.___calculateStyles();
-	    });
-	    // window.addEventListener('touchmove', () => {
-	    //   console.log('touchmove');
-	    //   this.___calculateStyles();
-	    // });
+	    window.addEventListener('scroll', this.___calculateStyles);
+	    window.addEventListener('touchmove', this.___calculateStyles);
 	  },
 	  componentWillUnmount: function componentWillUnmount() {
 	    window.removeEventListener('scroll', this.___calculateStyles);
-	    // window.removeEventListener('touchmove', this.___calculateStyles);
+	    window.removeEventListener('touchmove', this.___calculateStyles);
 	  },
 	  getChildContext: function getChildContext() {
 	    return {
@@ -20576,7 +20566,7 @@
 	    this._calculateStyles();
 	  },
 	  _register: function _register(component, level) {
-	    var _this2 = this;
+	    var _this = this;
 
 	    // const {items} = this.state;
 	    var components = this.components;
@@ -20633,8 +20623,8 @@
 	    return {
 	      registrationId: registrationId,
 	      unregister: function unregister() {
-	        var components = _this2.components,
-	            styles = _this2.styles;
+	        var components = _this.components,
+	            styles = _this.styles;
 
 	        // const {items, styles} = this.state;
 	        // delete items[level][registrationId];
@@ -21320,7 +21310,7 @@
 	    this.offsetTop = this.domRef2.offsetTop;
 	    this.offsetHeight = this.domRef2.offsetHeight;
 	    // this.clientHeight = this.domRef2.clientHeight;
-	    new _ResizeSensor2.default(this.domRef2, function () {
+	    this.resizeSensorCallback = function () {
 	      var _domRef = _this.domRef2,
 	          offsetTop = _domRef.offsetTop,
 	          offsetHeight = _domRef.offsetHeight;
@@ -21339,7 +21329,8 @@
 	        // Notify change to sticky-stack-context
 	        clearCacheAndUpdate();
 	      }
-	    });
+	    };
+	    this.resizeSensor = new _ResizeSensor2.default(this.domRef2, this.resizeSensorCallback);
 
 	    this.registrationRef = register(this, hierarchicalLevel
 	    // offsetTop,
@@ -21355,6 +21346,8 @@
 	    }
 	  },
 	  componentWillUnmount: function componentWillUnmount() {
+	    this.resizeSensor.detach(this.resizeSensorCallback);
+	    this.resizeSensor.detach();
 	    this.registrationRef.unregister();
 	  },
 	  _setHeight: function _setHeight(height) {
