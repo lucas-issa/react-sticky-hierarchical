@@ -1,6 +1,6 @@
 {
   "name": "react-sticky-hierarchical",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A Sticky Hierarchical component for React.js",
   "main": "dist/index.js",
   "scripts": {
@@ -15,9 +15,16 @@
     "Ben Davis",
     "Lucas Motta",
     "Michele Bertoli",
-    "Lucas Issa"
+    "Lucas Villela Neder Issa <lucas.issa@gmail.com>"
   ],
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucas-issa/react-sticky-hierarchical/issues"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/lucas-issa/react-sticky-hierarchical"
+  },
   "devDependencies": {
     "babel-cli": "^6.3.17",
     "babel-core": "^6.3.21",

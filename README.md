@@ -70,6 +70,9 @@ const App = React.createClass({
 ReactDOM.render(<App />, document.getElementById('app'));
 ```
 
+<code>StickyHierarchicalContext</code> component also has the optional <code>stickyClassName</code> property.
+
+
 Test
 ----
 

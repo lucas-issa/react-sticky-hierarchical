@@ -6,6 +6,7 @@ const StickyHierarchicalItem = React.createClass({
   propTypes: {
     children: React.PropTypes.any,
     hierarchicalLevel: React.PropTypes.number,
+    stickyClassName: React.PropTypes.object,
   },
 
   contextTypes: {
@@ -83,12 +84,17 @@ const StickyHierarchicalItem = React.createClass({
 
   render() {
     const {getStyle} = this.context;
-    const {children, hierarchicalLevel} = this.props;
+    const {children, hierarchicalLevel, stickyClassName} = this.props;
     const {height} = this.state;
+    const style = getStyle(hierarchicalLevel, this.registrationRef);
 
     return (
       <div ref={domRef => this.domRef = domRef} style={{height}}>
-        <div ref={domRef2 => this.domRef2 = domRef2} style={getStyle(hierarchicalLevel, this.registrationRef)}>
+        <div
+          className={style.position && style.position === 'fixed' && stickyClassName}
+          ref={domRef2 => this.domRef2 = domRef2}
+          style={style}
+        >
           {children}
         </div>
       </div>

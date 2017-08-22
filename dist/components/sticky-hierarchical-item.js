@@ -20,7 +20,8 @@ var StickyHierarchicalItem = _react2.default.createClass({
 
   propTypes: {
     children: _react2.default.PropTypes.any,
-    hierarchicalLevel: _react2.default.PropTypes.number
+    hierarchicalLevel: _react2.default.PropTypes.number,
+    stickyClassName: _react2.default.PropTypes.object
   },
 
   contextTypes: {
@@ -97,9 +98,11 @@ var StickyHierarchicalItem = _react2.default.createClass({
     var getStyle = this.context.getStyle;
     var _props = this.props,
         children = _props.children,
-        hierarchicalLevel = _props.hierarchicalLevel;
+        hierarchicalLevel = _props.hierarchicalLevel,
+        stickyClassName = _props.stickyClassName;
     var height = this.state.height;
 
+    var style = getStyle(hierarchicalLevel, this.registrationRef);
 
     return _react2.default.createElement(
       'div',
@@ -108,9 +111,13 @@ var StickyHierarchicalItem = _react2.default.createClass({
         }, style: { height: height } },
       _react2.default.createElement(
         'div',
-        { ref: function ref(domRef2) {
+        {
+          className: style.position && style.position === 'fixed' && stickyClassName,
+          ref: function ref(domRef2) {
             return _this2.domRef2 = domRef2;
-          }, style: getStyle(hierarchicalLevel, this.registrationRef) },
+          },
+          style: style
+        },
         children
       )
     );
