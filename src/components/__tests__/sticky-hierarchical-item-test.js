@@ -21,7 +21,7 @@ describe('StickyHierarchicalItem', () => {
       },
       getChildContext() {
         return {
-          getStyle: () => {},
+          getStyle: () => ({}),
           register,
         };
       },
